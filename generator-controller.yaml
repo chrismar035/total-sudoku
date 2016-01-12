@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: generator
+  labels:
+    app: generator
+spec:
+  replicas: 1
+  selector:
+    app: generator
+  template:
+    metadata:
+      labels:
+        app: generator
+    spec:
+      containers:
+      - name: generator
+        image: gcr.io/total-sudoku/sudoku-generator:v4
+        env:
+        - name: 'API_ROOT'
+          value: 'http://api'
