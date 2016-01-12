@@ -1,21 +1,22 @@
 apiVersion: v1
 kind: ReplicationController
 metadata:
-  name: api-v3
+  name: api-v5
   labels:
-    app: api
+    app: api-v5
 spec:
   replicas: 1
   selector:
-    app: api
+    app: api-v5
   template:
     metadata:
       labels:
-        app: api
+        app: api-v5
+        role: api-frontend
     spec:
       containers:
-      - name: api-v3
-        image: gcr.io/total-sudoku/sudoku-api:v3
+      - name: api-v5
+        image: gcr.io/total-sudoku/sudoku-api:v5
         ports:
         - name: http-server
           containerPort: 8080
